@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  gap: 20px;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 50px;
+}
+
+.nav-link {
+  color: #9f6cd3;
+  list-style: none;
+  gap: 30px;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #b393d3a7;
+  transition: color 0.4s;
+}
+
+.App {
+  text-align: center;
+}
+
+h2 {
+  color: #553c9ad6;
+  margin-bottom: 8px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.profile {
+  font-size: 50px;
+  margin-top: 20px;
+}
+
+.profile-details > p {
+  font-size: 30px;
+  line-height: 2;
+}
+
+h1 {
+  font-size: 70px;
+  text-align: center;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #553c9a, #b393d3);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin: 30px auto;
+}
+
+.login {
+  background-image: repeating-radial-gradient(
+    circle closest-corner at 100px 100px,
+    #553c9a,
+    #b393d3 10%,
+    #553c9a 20%
+  );
+
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.login-card {
+  background-color: #fff;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 30px auto;
+  text-align: center;
+}
+.todo-card {
+  background: #ffffffe3;
+  margin-top: 20px;
+  padding: 32px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.372) 1px 25px 28px 3px;
+}
+
+.search-input {
+  width: 100%;
+  color: #553c9a;
+  margin: 10px auto 5px auto;
+}
+
+.todo-form {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.todo-input {
+  outline: none;
+  background: none;
+  border: 1px solid #b393d3a7;
+  padding: 8px 16px;
+  margin-top: 16px;
+  width: 300px;
+  color: #553c9a;
+  font-weight: bolder;
+}
+
+.todo-input::placeholder {
+  color: #b393d3a7;
+}
+
+.add-task {
+  margin-bottom: 20px;
+}
+
+.todo-btn,
+.signout {
+  background: #b393d3a7;
+  color: #fff;
+  border: none;
+  padding: 9px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.todo-btn:hover,
+.signout:hover {
+  background: #8f6ab5;
+  color: #ffff;
+  font-weight: bolder;
+  transition: all 0.4s;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #8068c2;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 5px;
+  margin-bottom: 16px;
+}
+
+todo-edit {
+  display: flex;
+}
+
+.fa-trash {
+  margin-left: 12px;
+}
+
+.incompleted {
+  color: #fff;
+  cursor: pointer;
+}
+
+.completed {
+  color: #f8dfcbcf;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+.task:hover {
+  cursor: pointer;
+}
+
+.edit-icon,
+.delete-icon {
+  cursor: pointer;
+}
+
+.profile-details > p {
+  font-size: 25px;
+  color: #4e3e7ac5;
+}
+
+.signout-btn {
+  display: flex;
+}
+
+.signout {
+  justify-content: center;
+}
+
+.google-btn {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+}
+
+.signin-btn {
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #d3d3d3;
+  padding: 10px;
+  cursor: pointer;
+  justify-content: center;
+}
