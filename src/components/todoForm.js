@@ -3,15 +3,15 @@ import React, { useState } from "react";
 export function TodoForm({ addTodo }) {
   const [value, setValue] = useState("");
 
+  /* handle input value change */
   const handleChange = (evnt) => {
     setValue(evnt.target.value);
   };
 
+  /* handle form submission */
   const handleSubmit = (evnt) => {
-    evnt.preventDefault(); // prevent reloading the page
-
+    evnt.preventDefault();
     addTodo(value);
-
     setValue("");
   };
 

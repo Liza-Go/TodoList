@@ -1,9 +1,9 @@
 import React from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import { App } from "./App";
 import { List } from "./pages/list";
-import { Home } from "./pages/home";
 import { Profile } from "./pages/profile";
+import { Login } from "./components/login";
 
 export const router = createBrowserRouter([
   {
@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Navigate to="/list" />,
       },
       {
         path: "/list",
@@ -21,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

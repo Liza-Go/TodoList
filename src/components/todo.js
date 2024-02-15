@@ -7,23 +7,34 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { updateTask } from "../firebase/todoService";
 
+/**
+ * Component representing a single todo item.
+ * @param {Object} task - The todo item object containing task details.
+ * @param {function} toggleComplete - Function to toggle completion status of the task.
+ * @param {function} deleteTask - Function to delete the task.
+ */
+
 export function Todo({ task, toggleComplete, deleteTask }) {
   const [editing, setEditing] = useState(false);
   const [editedTask, setEditedTask] = useState(task.task);
 
+  /* update edited task when task prop changes */
   useEffect(() => {
     setEditedTask(task.task);
   }, [task]);
 
+  /* handle editing mode */
   const handleEdit = () => {
     setEditing(true);
   };
 
+  /* handle saving edited task */
   const handleSave = () => {
     updateTask(task.id, { task: editedTask });
     setEditing(false);
   };
 
+  /* handle saving edited task on pressing Enter key */
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       handleSave();

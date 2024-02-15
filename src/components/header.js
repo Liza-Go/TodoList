@@ -16,20 +16,20 @@ export function Header() {
     <>
       <nav className="navbar">
         <div className="container">
-          <ul className="nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/list">
-                Todo
-              </Link>
-            </li>
-            {user && (
+          {user && (
+            <ul className="nav">
+              <li className="nav-item">
+                <Link className="nav-link" to="/list">
+                  Todo
+                </Link>
+              </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
                   My Profile
                 </Link>
               </li>
-            )}
-          </ul>
+            </ul>
+          )}
         </div>
       </nav>
     </>

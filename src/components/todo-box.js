@@ -7,15 +7,23 @@ import {
   deleteTask as deleteTaskFb,
 } from "../firebase/todoService";
 import { SearchBar } from "./searchbar";
+import { useAuth } from "../providers/authProvider";
+
+/* Component representing the container for managing todo items */
 
 export function TodoBox() {
   const [todos, setTodos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const user = useAuth();
+  const uid = user && user.uid;
+
+  /* add a new todo item */
 
   const addTodo = (task) => {
-    addTask(task);
+    addTask(user.uid, task);
   };
 
+  /* toggle completion status of a todo item */
   const toggleComplete = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -24,6 +32,7 @@ export function TodoBox() {
     );
   };
 
+  /* delete a todo item */
   const deleteTask = (todo) => {
     console.log(todo.id);
     var result = window.confirm("Are you sure you want to delete the task?");
@@ -33,16 +42,18 @@ export function TodoBox() {
     }
   };
 
+  /* handle search term changes */
   const onSearch = (value) => {
     setSearchTerm(value);
   };
 
+  /* fetch and update todo items from Firebase based on user ID and search term */
   useEffect(() => {
-    const unSubscribe = getTasksListener(searchTerm, (tasks) => {
+    const unSubscribe = getTasksListener(uid, searchTerm, (tasks) => {
       setTodos(tasks);
     });
     return unSubscribe;
-  }, [searchTerm]);
+  }, [searchTerm, uid]);
 
   return (
     <div>

@@ -1,28 +1,12 @@
-import { useState, useEffect } from "react";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase/firebase.config";
 
-export function Login({ setIsSignedIn }) {
-  const [value, setValue] = useState("");
-
+export function Login() {
   const signInWithGoogle = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        localStorage.setItem("name", result.user.email);
-        localStorage.setItem("email", result.user.email);
-        localStorage.setItem("UId", result.user.uid);
-        setValue(result.user.email);
-        setIsSignedIn(true); //
-      })
-      .catch((error) => {
-        console.error("Error signing in with Google:", error);
-      });
+    signInWithPopup(auth, provider).catch((error) => {
+      console.error("Error signing in with Google:", error);
+    });
   };
-
-  useEffect(() => {
-    const userEmail = localStorage.getItem("email");
-    setValue(userEmail);
-  }, []);
 
   return (
     <div className="container">
