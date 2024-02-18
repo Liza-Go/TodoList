@@ -15,7 +15,6 @@ export function Login() {
       <div className="google-btn">
         <button className="signin-btn" onClick={signInWithGoogle}>
           <img
-            className="w-6 h-6"
             src="https://www.svgrepo.com/show/475656/google-color.svg"
             loading="lazy"
             alt="google logo"

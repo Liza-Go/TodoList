@@ -34,7 +34,6 @@ export function TodoBox() {
 
   /* delete a todo item */
   const deleteTask = (todo) => {
-    console.log(todo.id);
     var result = window.confirm("Are you sure you want to delete the task?");
     if (result) {
       deleteTaskFb(todo.id, todo.task);
