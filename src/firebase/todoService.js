@@ -17,7 +17,6 @@ const todoCollectionName = "todos";
 /* fetch all todo items from the Firestore database */
 export async function getTodos() {
   const querySnapshot = await getDocs(collection(db, todoCollectionName));
-  debugger;
   querySnapshot.forEach((doc) => {
     // Log each todo item
     console.log(doc.id, " => ", doc.data());
@@ -58,16 +57,17 @@ export function updateTask(id, data) {
  * Function to listen for changes to todo items in the Firestore database for a specific user.
  * @param {string} uid - User ID to filter todo items.
  * @param {string} input - Search term to filter todo items.
- * @param {function} callback - Callback function to handle updated todo items.
+ * @param {function} callback - Callb ack function to handle updated todo items.
  */
 
 export function getTasksListener(uid, input, callback) {
-  const q = query(collection(db, todoCollectionName), where("uid", "==", uid));
+  const q = query(collection(db, todoCollectionName), where("uid", "==", uid)); // selects all documents (by uid)
   return onSnapshot(q, (snapshot) => {
     const tasks = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
+
     const filteredTasks = input
       ? tasks.filter(({ task }) => task.includes(input))
       : tasks;

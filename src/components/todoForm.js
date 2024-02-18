@@ -23,6 +23,7 @@ export function TodoForm({ addTodo }) {
         value={value}
         placeholder="What is the task for today?"
         onChange={handleChange}
+        required
       />
       <button type="submit" className="todo-btn">
         Add Task

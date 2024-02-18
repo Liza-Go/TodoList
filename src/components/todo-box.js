@@ -14,6 +14,7 @@ import { useAuth } from "../providers/authProvider";
 export function TodoBox() {
   const [todos, setTodos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+
   const user = useAuth();
   const uid = user && user.uid;
 
@@ -62,8 +63,8 @@ export function TodoBox() {
         <TodoForm addTodo={addTodo} />
         {todos.map((todo, index) => (
           <Todo
-            task={todo}
             key={index}
+            task={todo}
             toggleComplete={toggleComplete}
             deleteTask={deleteTask}
           />
