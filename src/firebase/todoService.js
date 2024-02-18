@@ -53,6 +53,11 @@ export function updateTask(id, data) {
   });
 }
 
+export async function updateTaskStatus(id, completed) {
+  const taskRef = doc(db, todoCollectionName, id);
+  await updateDoc(taskRef, { completed });
+}
+
 /**
  * Function to listen for changes to todo items in the Firestore database for a specific user.
  * @param {string} uid - User ID to filter todo items.

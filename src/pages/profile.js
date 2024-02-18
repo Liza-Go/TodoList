@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { auth } from "../firebase/firebase.config";
 import { signOut } from "firebase/auth";
 import { useAuth } from "../providers/authProvider";

@@ -4,6 +4,7 @@ import { Todo } from "./todo";
 import {
   addTask,
   getTasksListener,
+  updateTaskStatus,
   deleteTask as deleteTaskFb,
 } from "../firebase/todoService";
 import { SearchBar } from "./searchbar";
@@ -26,11 +27,15 @@ export function TodoBox() {
 
   /* toggle completion status of a todo item */
   const toggleComplete = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
+    const task = todos.find((todo) => todo.id === id);
+    if (task) {
+      updateTaskStatus(id, !task.completed);
+    }
+    // setTodos(
+    //   todos.map((todo) =>
+    //     todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    //   )
+    // );
   };
 
   /* delete a todo item */
