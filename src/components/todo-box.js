@@ -15,6 +15,7 @@ import { useAuth } from "../providers/authProvider";
 export function TodoBox() {
   const [todos, setTodos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [mode, setMode] = useState("All");
 
   const user = useAuth();
   const uid = user && user.uid;
@@ -31,11 +32,6 @@ export function TodoBox() {
     if (task) {
       updateTaskStatus(id, !task.completed);
     }
-    // setTodos(
-    //   todos.map((todo) =>
-    //     todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    //   )
-    // );
   };
 
   /* delete a todo item */
@@ -52,13 +48,18 @@ export function TodoBox() {
     setSearchTerm(value);
   };
 
+  const handleChangedMode = () => {
+    const currentMode = mode === "completed" ? "all" : "completed";
+    setMode(currentMode);
+  };
+
   /* fetch and update todo items from Firebase based on user ID and search term */
   useEffect(() => {
-    const unSubscribe = getTasksListener(uid, searchTerm, (tasks) => {
+    const unSubscribe = getTasksListener(uid, searchTerm, mode, (tasks) => {
       setTodos(tasks);
     });
     return unSubscribe;
-  }, [searchTerm, uid]);
+  }, [searchTerm, uid, mode]);
 
   return (
     <div>
@@ -74,6 +75,7 @@ export function TodoBox() {
             deleteTask={deleteTask}
           />
         ))}
+        <input type="checkbox" onClick={handleChangedMode}></input>
       </div>
     </div>
   );

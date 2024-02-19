@@ -65,7 +65,7 @@ export async function updateTaskStatus(id, completed) {
  * @param {function} callback - Callb ack function to handle updated todo items.
  */
 
-export function getTasksListener(uid, input, callback) {
+export function getTasksListener(uid, input, mode, callback) {
   const q = query(collection(db, todoCollectionName), where("uid", "==", uid)); // selects all documents (by uid)
   return onSnapshot(q, (snapshot) => {
     const tasks = snapshot.docs.map((doc) => ({
@@ -76,7 +76,15 @@ export function getTasksListener(uid, input, callback) {
     const filteredTasks = input
       ? tasks.filter(({ task }) => task.includes(input))
       : tasks;
-    const sortedTasks = filteredTasks.sort((a, b) => {
+
+    let displayTasks;
+    if (mode === "completed") {
+      displayTasks = filteredTasks.filter(({ completed }) => completed);
+    } else {
+      displayTasks = filteredTasks;
+    }
+
+    const sortedTasks = displayTasks.sort((a, b) => {
       return b.created - a.created; // Sort by creation timestamp
     });
     callback(sortedTasks);
