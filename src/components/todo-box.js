@@ -75,7 +75,10 @@ export function TodoBox() {
             deleteTask={deleteTask}
           />
         ))}
-        <input type="checkbox" onClick={handleChangedMode}></input>
+        <label className="show-completed">
+          <input type="checkbox" onClick={handleChangedMode} />
+          &nbsp;Completed tasks
+        </label>
       </div>
     </div>
   );

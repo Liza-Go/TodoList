@@ -217,3 +217,8 @@ todo-edit {
   cursor: pointer;
   justify-content: center;
 }
+
+.show-completed {
+  color: #553c9a;
+  font-style: italic;
+}
