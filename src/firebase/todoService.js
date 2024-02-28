@@ -80,13 +80,13 @@ export function getTasksListener(uid, input, mode, callback) {
     let displayTasks;
     if (mode === "completed") {
       displayTasks = filteredTasks.filter(({ completed }) => completed);
+    } else if (mode === "incomplete") {
+      displayTasks = filteredTasks.filter(({ completed }) => !completed);
     } else {
       displayTasks = filteredTasks;
     }
 
-    const sortedTasks = displayTasks.sort((a, b) => {
-      return b.created - a.created; // Sort by creation timestamp
-    });
+    const sortedTasks = displayTasks.sort((a, b) => b.created - a.created);
     callback(sortedTasks);
   });
 }

@@ -218,7 +218,6 @@ todo-edit {
   justify-content: center;
 }
 
-.show-completed {
-  color: #553c9a;
-  font-style: italic;
+.mode {
+  margin: 5px;
 }

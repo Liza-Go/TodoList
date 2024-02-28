@@ -48,9 +48,8 @@ export function TodoBox() {
     setSearchTerm(value);
   };
 
-  const handleChangedMode = () => {
-    const currentMode = mode === "completed" ? "all" : "completed";
-    setMode(currentMode);
+  const handleChangedMode = (mode) => {
+    setMode(mode);
   };
 
   /* fetch and update todo items from Firebase based on user ID and search term */
@@ -75,10 +74,26 @@ export function TodoBox() {
             deleteTask={deleteTask}
           />
         ))}
-        <label className="show-completed">
-          <input type="checkbox" onClick={handleChangedMode} />
-          &nbsp;Completed tasks
-        </label>
+        <div>
+          <button
+            className="todo-btn mode"
+            onClick={() => handleChangedMode("all")}
+          >
+            All Tasks
+          </button>
+          <button
+            className="todo-btn mode"
+            onClick={() => handleChangedMode("completed")}
+          >
+            Completed Tasks
+          </button>
+          <button
+            className="todo-btn mode"
+            onClick={() => handleChangedMode("incomplete")}
+          >
+            Incomplete Tasks
+          </button>
+        </div>
       </div>
     </div>
   );
